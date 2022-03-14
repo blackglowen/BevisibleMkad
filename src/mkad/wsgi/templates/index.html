@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <title>MKAD Distance Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css"/>
+</head>
+<body>
+    <h1>Welcome to MKAD Distance Calculator</h1>
+    <p>MKAD distance calculator is a simple Flask application using a Blueprint to find the distance from the Moscow Ring Road to the specified address. The address is passed to the application in an HTTP request, then via the Yandex Geocoder HTTP API the distance from the MKAD to the specified address is calculated and returned to the user.</p>
+    <p>Addresses inside the MKAD perimeter are their distances set zero.</p>
+    <div class="container">
+        <button id="mkad-btn">Calculate MKAD Distance</button>
+    </div>
+    <h2>Navigation</h2>
+    <ul>
+        <li><a href="#get-started">Get started</a></li>
+        <li><a href="https://github.com/blackglowen/mkad/" target="_blank">Documentation</a></li>
+        <li><a href="https://github.com/blackglowen/mkad/" target="_blank">Source code</a></li>
+    </ul>
+
+    <h1 id="get-started"> How to install and run the app?</h1>
+    <p>We assume that your current working directory is the project root dir.</p>
+    <h3>Method 1: Installing the wheel distribution in a virtual environment</h3>
+    <p>1- Create a python virtual environment with the following command:</p>
+    <p><blockquote> python -m venv ./venv</blockquote> </p>
+    <p>2- Activate the virtual envronment:</p>
+    <p><blockquote>source ./venv/bin/activate  </blockquote></p>
+    <p>3- Install the wheel distrubtion located in the dist directory inside the project root dir.</p> 
+    <p><blockquote>pip install ./dist/mkaddis-1.0.0-py3-none-any.whl</blockquote></p>
+    <p>4- Finally run the application by simply typing the following command: </p>
+    <p><blockquote> mkaddis</blockquote> </p>
+    <h3>Method 2: Creating and running directly a docker image of the app</h3>
+    <p>We assume that you have the docker engine and client installed and set up on your local machine. </p>
+    <p>From the root directory of the project create a docker image called mkad-dist-calc, then run 
+      the app. To do so just run the following commads: </p>
+    <p><blockquote>docker build -t mkad-dist-calc .</blockquote></p>
+    <p><blockquote>run -p 5000:5000  mkad-dist-calc mkaddis </blockquote></p>
+    <h1> How to use the app?</h1>
+
+    <p>Once the app is app and running, you will see a simple button that triggers a prompt asking the input address to which should calculate the distance from MKAD.
+   
+    Gennerally the app follows a route pattern like this http://127.0.0.1:5000/mkad/api/ADDRESS for searching matches to the specified address. Here you should replace ADDRESS by any string with no special characters representing the input address.</p>
+
+    <h3>Examples</h3>
+    <h4>http://127.0.0.1:5000/mkad/api/Istanbul</h4>
+    <h4>http://127.0.0.1:5000/mkad/api/Reutov,Ivanovskoe</h4>
+
+    <script src="{{ url_for('static', filename='script.js') }}" type="text/javascript"></script>
+</body>

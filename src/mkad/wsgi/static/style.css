@@ -1,0 +1,36 @@
+.title{
+    margin: 15 0 px;
+}
+.error{
+  color: brown !important;
+  font-weight: bold;
+}
+
+.text-right{
+  text-align: right !important;
+}
+.my-5{
+  margin: 15px 0px ;
+}
+.route-table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .route-table td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+.route-table tr:nth-child(even){background-color: #f2f2f2;}
+  
+.route-table tr:hover {background-color: #ddd;}
+  
+.route-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }

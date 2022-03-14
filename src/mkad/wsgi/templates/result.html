@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <title>MKAD Distance Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css"/>
+</head>
+<body>
+    <h1 class="title">Matched Addresses</h1>
+    <div class="text-right my-5">
+        <button id="mkad-btn">Calculate MKAD Distance</button>
+    </div>
+    <p>Found {{ found | count }} match(es) corresponding to the given address <strong>{{ address }}</strong> </p>
+    <table class="route-table">
+        <thead>
+            <th>No.</th>
+            <th>MKAD Distance (approx.)</th>
+            <th>Name</th>
+            <th>Longitude</th>
+            <th>Latitude</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            {% for addr in found %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td> {{ addr['dist'] }} km {% if addr['dist'] == 0  %} (address inside MKAD) {% endif %}</td>
+                <td>{{ addr['name'] }}</td>
+                <td>{{ addr['long'] }}</td>
+                <td>{{ addr['lat'] }}</td>
+                <td>{{ addr['desc'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="my-5"> <a href="{{ url_for('home') }}">Homepage</a></div>
+    <script src="{{ url_for('static', filename='script.js') }}" type="text/javascript"></script>
+</body>
